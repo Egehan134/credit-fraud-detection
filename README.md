@@ -1,1 +1,1 @@
-# fraud-detection-banking
+# fraud-detection

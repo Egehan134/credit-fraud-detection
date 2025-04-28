@@ -4,3 +4,30 @@ V1-V28: Principal components,
 Time: Seconds elapsed since the first transaction.
 Amount: Transaction amount
 Class: Target variable(1 = fraud, 0 = legitimate)
+
+A larger training set like 80/20 will improve model learning but may reduce evaluation reliability due to a smaller test set.
+But in the orther a larger test set like 60/40 gives more reliable evaluation but reduces training data that causes less trained model.
+
+We must use StandardScaler for normalize the range of variables in a dataset. It ensures that all variables contribute equally to the model's learning
+process. StandardScaler standardizes columns by transforming them to have a mean of 0 and a standard deviation of 1.
+
+Model               | Advantages                                            | Disadvantages
+Logistic Regression | Simple, fast, easy to interpret                       | Requires linear relationships, weak with imbalanced data
+SVM                 | Good at modeling complex boundaries                   | Slow, difficult parameter tuning, weak with large data
+KNN                 | Simple, easily adapts to new data                     | Slow, struggles with large data, weak with imbalanced data
+Random Forest       | Good with imbalanced data, high accuracy              | Difficult to interpret, requires some tuning
+XGBoost / LightGBM  | High accuracy, fast, works well with imbalanced data  | Complex tuning, risk of overfitting
+Neural Networks     | Excellent with complex data, powerful modeling        | Overfitting, long training times, difficult to interpret
+Decision Trees      | Fast, easy to interpret, low computational cost       | Overfitting, weak with imbalanced data
+
+RandomForest Confusion Matrix
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00     85292
+           1       0.96      0.74      0.84       151
+
+    accuracy                           1.00     85443
+   macro avg       0.98      0.87      0.92     85443
+weighted avg       1.00      1.00      1.00     85443
+
+It seems very good but accuracy must be misleading because the data is highly imbalanced. Normal transactions vastly outnumbers fradulent ones.

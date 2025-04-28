@@ -1,0 +1,6 @@
+Created a new env for packages.
+Data set is highly unbalanced, frauds are 0.172% of all transactions.
+V1-V28: Principal components,
+Time: Seconds elapsed since the first transaction.
+Amount: Transaction amount
+Class: Target variable(1 = fraud, 0 = legitimate)

@@ -9,7 +9,9 @@ A larger training set like 80/20 will improve model learning but may reduce eval
 But in the orther a larger test set like 60/40 gives more reliable evaluation but reduces training data that causes less trained model.
 
 We must use StandardScaler for normalize the range of variables in a dataset. It ensures that all variables contribute equally to the model's learning
-process. StandardScaler standardizes columns by transforming them to have a mean of 0 and a standard deviation of 1.
+process. StandardScaler standardizes columns by transforming them to have a mean of 0 and a standard deviation of 1.(didn't need in this data)
+
+RobustScaler is lesst prone to outliers.
 
 Model               | Advantages                                            | Disadvantages
 Logistic Regression | Simple, fast, easy to interpret                       | Requires linear relationships, weak with imbalanced data
@@ -20,7 +22,7 @@ XGBoost / LightGBM  | High accuracy, fast, works well with imbalanced data  | Co
 Neural Networks     | Excellent with complex data, powerful modeling        | Overfitting, long training times, difficult to interpret
 Decision Trees      | Fast, easy to interpret, low computational cost       | Overfitting, weak with imbalanced data
 
-RandomForest Confusion Matrix
+RandomForest Confusion Matrix (wihtout balance between samples)
               precision    recall  f1-score   support
 
            0       1.00      1.00      1.00     85292
@@ -31,3 +33,15 @@ RandomForest Confusion Matrix
 weighted avg       1.00      1.00      1.00     85443
 
 It seems very good but accuracy must be misleading because the data is highly imbalanced. Normal transactions vastly outnumbers fradulent ones.
+
+For fix the imbalance between samples we can use SMOTE or Sub-Sampling (or two of them)(there are a lot of other methods too)
+Aspect                      | SMOTE (Synthetic Minority Over-sampling Technique)                                                            | Sub-sampling (Under-sampling)
+Purpose                     | Increases the number of minority class samples by generating synthetic examples.                              | Reduces the number of majority class samples to balance the classes.
+Approach                    | Over-sampling: Generates synthetic examples for the minority class.                                           | Under-sampling: Removes examples from the majority class.
+Impact on Data              | Adds synthetic data points to the minority class.                                                             | Reduces the total number of data points by removing majority class examples.
+Risk of Information Loss    | No loss of real data since new synthetic examples are created.                                                | Potential loss of valuable data from the majority class.
+Effect on Model Performance | Helps the model learn the minority class better, but may risk overfitting with too many synthetic examples.   | Can lead to faster training and lower memory usage but may affect model's ability to generalize due to loss of majority class data.
+Ideal Scenario              | When the minority class is significantly underrepresented and you want to increase its representation.        | When the majority class is overwhelmingly large and may dominate the model's learning process.
+Handling Data Imbalance     | Balances data by creating more instances of the minority class.                                               | Balances data by reducing the number of majority class instances.
+Model Complexity            | May increase model complexity due to the creation of synthetic data.                                          | May decrease model complexity by reducing the dataset size.
+Overfitting Risk            | Higher risk if too many synthetic examples are created.                                                       | Lower risk of overfitting, but may lead to poor model performance due to insufficient data from the majority class.

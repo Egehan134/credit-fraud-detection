@@ -45,3 +45,27 @@ Ideal Scenario              | When the minority class is significantly underrepr
 Handling Data Imbalance     | Balances data by creating more instances of the minority class.                                               | Balances data by reducing the number of majority class instances.
 Model Complexity            | May increase model complexity due to the creation of synthetic data.                                          | May decrease model complexity by reducing the dataset size.
 Overfitting Risk            | Higher risk if too many synthetic examples are created.                                                       | Lower risk of overfitting, but may lead to poor model performance due to insufficient data from the majority class.
+
+RandomForest Confusion Matrix (with balance between samples)
+             precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00     85292
+           1       0.96      0.74      0.84       151
+
+    accuracy                           1.00     85443
+   macro avg       0.98      0.87      0.92     85443
+weighted avg       1.00      1.00      1.00     85443
+
+Accuracy:
+Classifier: Logistic Regression has an average training accuracy of 93.89%
+Classifier: K-Nearest Neighbors has an average training accuracy of 91.72%
+Classifier: Support Vector Machine has an average training accuracy of 92.59%
+Classifier: Decision Tree has an average training accuracy of 91.13%
+Classifier: RandomForestClassifier has an average training accuracy of 93.31%
+
+Cross Validation Scores after Hyperparameter Tuning:
+Logistic Regression: 93.89% accuracy
+K-Nearest Neighbors: 92.0% accuracy
+Support Vector Classifier: 94.18% accuracy
+Decision Tree Classifier: 91.28% accuracy
+Random Forest Classifier: 93.31% accuracy
